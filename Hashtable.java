@@ -1,3 +1,6 @@
+/* This is the Hashtable class.
+ * @author Tao Guo
+ */
 
 public class Hashtable<K, V> {
 
@@ -25,7 +28,11 @@ public class Hashtable<K, V> {
 
 	}
 
-	public int getIndex(K key) {
+	/*
+	 * Helper method to get index.
+	 */
+
+	private int getIndex(K key) {
 
 		int hashCode = Math.abs(key.hashCode());
 
@@ -33,6 +40,11 @@ public class Hashtable<K, V> {
 
 		return index;
 	}
+
+	/*
+	 * Returns the value associated with the key which is passed as an argument;
+	 * returns null if no key/value pair is contained by the Hashtable instance
+	 */
 
 	public String get(String key) {
 
@@ -51,6 +63,11 @@ public class Hashtable<K, V> {
 		return returnVal;
 	}
 
+	/*
+	 * Returns “true” if a key/value object pair (with the key matching the argument
+	 * and any value).
+	 */
+
 	public boolean containsKey(String key) {
 
 		int index = getIndex((K) key);
@@ -67,6 +84,12 @@ public class Hashtable<K, V> {
 		return returnVal;
 
 	}
+
+	/*
+	 * Adds the key/value pair into the Hashtable instance. If there is an existing
+	 * key/value pair, the Hashtable instance replaces the stored value with the
+	 * argument value.
+	 */
 
 	public void put(String key, String value) {
 
@@ -90,7 +113,13 @@ public class Hashtable<K, V> {
 
 	}
 
-	public String remove(String key) throws Exception {
+	/*
+	 * Removes the key/value pair from the Hashtable instance and returns the value
+	 * associated with the key to the caller. Throws an Exception instance if the
+	 * key is not present in the Hashtable instance
+	 */
+
+	public String remove(String key) {
 
 		int index = getIndex((K) key);
 
@@ -106,7 +135,7 @@ public class Hashtable<K, V> {
 			temp.next = temp.next.next;
 			return (String) temp.next.val;
 		}
-		throw new Exception();
+		return null;
 
 	}
 }
